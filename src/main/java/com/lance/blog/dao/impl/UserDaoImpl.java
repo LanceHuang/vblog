@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * @author Lance
  * @since 2017/11/13
  */
-//@Component(value = "userDao")
+@Component(value = "userDao")
 public class UserDaoImpl implements IUserDao {
 
     public User select(int id) {

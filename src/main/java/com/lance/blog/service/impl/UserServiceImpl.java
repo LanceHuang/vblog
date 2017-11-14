@@ -3,6 +3,7 @@ package com.lance.blog.service.impl;
 import com.lance.blog.dao.IUserDao;
 import com.lance.blog.entity.User;
 import com.lance.blog.service.IUserService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
@@ -10,7 +11,7 @@ import javax.annotation.Resource;
  * @author Lance
  * @since 2017/11/13
  */
-
+@Service("userService")
 public class UserServiceImpl implements IUserService {
 
     @Resource
