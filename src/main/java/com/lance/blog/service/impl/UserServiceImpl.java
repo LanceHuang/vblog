@@ -11,10 +11,10 @@ import javax.annotation.Resource;
  * @author Lance
  * @since 2017/11/13
  */
-@Service("userService")
+@Service(value = "userService")
 public class UserServiceImpl implements IUserService {
 
-    @Resource
+    @Resource(name = "userDao")
     private IUserDao userDao;
 
     public User getUserById(int id) {

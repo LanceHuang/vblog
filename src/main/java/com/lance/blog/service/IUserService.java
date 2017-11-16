@@ -7,5 +7,12 @@ import com.lance.blog.entity.User;
  * @since 2017/11/13
  */
 public interface IUserService {
+
+    /**
+     * Get an user by id
+     *
+     * @param id user id
+     * @return {@code null} if not user found
+     */
     User getUserById(int id);
 }

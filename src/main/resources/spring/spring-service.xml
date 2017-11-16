@@ -7,6 +7,6 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.lance.blog.controller,com.lance.blog.service,com.lance.blog.dao"/>
+    <context:component-scan base-package="com.lance.blog.service"/>
 
 </beans>

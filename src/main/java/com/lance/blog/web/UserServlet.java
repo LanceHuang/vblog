@@ -1,4 +1,4 @@
-package com.lance.blog.servlet;
+package com.lance.blog.web;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

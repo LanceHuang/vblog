@@ -3,32 +3,37 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-    <!--错误页-->
-    <!--<error-page>-->
-    <!--<error-code>404</error-code>-->
-    <!--<location></location>-->
-    <!--</error-page>-->
+    <!--Error page-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/jsp/500.jsp</location>
+    </error-page>
 
-    <!--Session超时配置-->
+    <!--Session config-->
     <session-config>
         <session-timeout>20</session-timeout>
     </session-config>
 
-    <!--<context-param>-->
-    <!--<param-name>contextConfigLocation</param-name>-->
-    <!--<param-value>classpath:spring.xml</param-value>-->
-    <!--</context-param>-->
+    <!--Spring core-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:spring/spring-*.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
-    <!--<listener>-->
-    <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-    <!--</listener>-->
-
+    <!--Spring mvc-->
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring-mvc.xml</param-value>
+            <param-value>classpath:spring/spring-web.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
