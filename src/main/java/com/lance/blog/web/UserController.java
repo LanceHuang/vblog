@@ -3,9 +3,7 @@ package com.lance.blog.web;
 import com.lance.blog.entity.User;
 import com.lance.blog.service.IUserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -29,8 +27,12 @@ public class UserController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String getAllUser() {
-        // TODO: 2017/11/16
         return "welcome";
     }
 
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public String addUser(@RequestBody User user) {
+        System.out.println("Add user: " + user);
+        return "welcome";
+    }
 }
