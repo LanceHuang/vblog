@@ -35,4 +35,11 @@ public class UserController {
         System.out.println("Add user: " + user);
         return "welcome";
     }
+
+    @RequestMapping(value = "/test")
+    public String test() {
+        System.out.println("Test");
+        return "welcome";
+    }
+
 }
