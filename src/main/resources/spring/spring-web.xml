@@ -11,11 +11,15 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:component-scan base-package="com.lance.blog.web"/>
+
     <mvc:annotation-driven>
         <mvc:path-matching suffix-pattern="false"/>
     </mvc:annotation-driven>
 
-    <context:component-scan base-package="com.lance.blog.web"/>
+    <mvc:interceptors>
+        <bean class="com.lance.blog.interceptor.LogInterceptor"/>
+    </mvc:interceptors>
 
     <!--View resolver-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
