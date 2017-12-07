@@ -2,10 +2,15 @@ package com.lance.blog.web;
 
 import com.lance.blog.entity.User;
 import com.lance.blog.service.IUserService;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.*;
 
 /**
  * @author Lance
@@ -37,9 +42,16 @@ public class UserController {
     }
 
     @RequestMapping(value = "/test")
-    public String test() {
+    @ResponseBody
+    public Map test() {
         System.out.println("Test");
-        return "welcome";
+
+        Map map = new HashMap();
+        map.put("name", "lance");
+        map.put("age", 23);
+        map.put("hi", "1234fdsd");
+
+        return map;
     }
 
 }
