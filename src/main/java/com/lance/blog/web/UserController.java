@@ -2,15 +2,15 @@ package com.lance.blog.web;
 
 import com.lance.blog.entity.User;
 import com.lance.blog.service.IUserService;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
-import java.util.*;
 
 /**
  * @author Lance
@@ -18,40 +18,30 @@ import java.util.*;
 @Controller
 public class UserController {
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Resource(name = "userService")
     private IUserService userService;
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public String getUserById(@PathVariable int id) {
-        System.out.println("Hello SpringMVC");
+        logger.debug("getUserById");
         User u = userService.getUserById(id);
-        System.out.println("User: " + u);
+        logger.debug("User: {}", u);
 
         return "welcome";
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String getAllUser() {
+        logger.debug("getAllUser");
         return "welcome";
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public String addUser(@RequestBody User user) {
-        System.out.println("Add user: " + user);
+        logger.debug("addUser");
+        logger.debug("Add user: {}", user);
         return "welcome";
     }
-
-    @RequestMapping(value = "/test")
-    @ResponseBody
-    public Map test() {
-        System.out.println("Test");
-
-        Map map = new HashMap();
-        map.put("name", "lance");
-        map.put("age", 23);
-        map.put("hi", "1234fdsd");
-
-        return map;
-    }
-
 }

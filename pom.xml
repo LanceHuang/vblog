@@ -8,7 +8,7 @@
 
     <properties>
         <slf4j.version>1.7.25</slf4j.version>
-        <junit.version>4.11</junit.version>
+        <junit.version>4.12</junit.version>
 
         <spring.version>4.3.13.RELEASE</spring.version>
 
@@ -30,6 +30,12 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -92,6 +98,15 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
     <!-- ==================================Default config============================ -->
     <profiles>
         <profile>
@@ -103,7 +118,7 @@
                 <!--JDBC config-->
                 <jdbc.driverClass>com.mysql.jdbc.Driver</jdbc.driverClass>
                 <jdbc.url>
-                    <![CDATA[jdbc:mysql://localhost:3306/vblog?useUnicode=true&characterEncoding=UTF-8]]]></jdbc.url>
+                    <![CDATA[jdbc:mysql://localhost:3306/vblog]]]></jdbc.url>
                 <jdbc.username>root</jdbc.username>
                 <jdbc.password></jdbc.password>
             </properties>
