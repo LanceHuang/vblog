@@ -13,16 +13,19 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class ProfileAspect {
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Around("execution(* com.lance.blog.web.*.*(..))")
-    public Object aroundAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
-
         Object returnVal = joinPoint.proceed();
-
         long endTime = System.currentTimeMillis();
-        logger.debug("Runtime: {} millisecond", endTime - startTime);
+
+        logger.debug("{}.{}: {} millisecond",
+                joinPoint.getTarget().getClass().getName(),
+                joinPoint.getSignature().getName(),
+                endTime - startTime);
 
         return returnVal;
     }
