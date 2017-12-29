@@ -8,4 +8,6 @@ import com.lance.blog.entity.User;
  */
 public interface IUserDao {
     User select(int id);
+
+    int update(User user);
 }
