@@ -9,7 +9,7 @@ public class VBlogInitializer extends AbstractAnnotationConfigDispatcherServletI
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{VBlogRootConfig.class};
+        return new Class[]{VBlogRootConfig.class, PersistentConfig.class};
     }
 
     @Override

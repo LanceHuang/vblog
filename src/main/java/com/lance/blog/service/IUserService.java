@@ -15,4 +15,13 @@ public interface IUserService {
      * @return {@code null} if not user found
      */
     User getUserById(int id);
+
+
+    /**
+     * Update user info
+     *
+     * @param u user info
+     * @return return code
+     */
+    int updateUserById(User u);
 }

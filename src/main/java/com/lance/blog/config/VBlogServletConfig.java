@@ -17,7 +17,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * @author Lance
  */
 @Configuration
-@ComponentScan(basePackages = {"com.lance.blog.web", "com.lance.blog.aspect"})
+@ComponentScan(basePackages = {"com.lance.blog.web"})
 @EnableAspectJAutoProxy
 public class VBlogServletConfig extends WebMvcConfigurationSupport {
 

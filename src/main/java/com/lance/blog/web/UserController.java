@@ -42,6 +42,7 @@ public class UserController {
     public String addUser(@RequestBody User user) {
         logger.debug("addUser");
         logger.debug("Add user: {}", user);
+        userService.updateUserById(user);
         return "welcome";
     }
 }

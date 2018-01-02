@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @author Lance
  */
 @Configuration
-@ComponentScan(basePackages = {"com.lance.blog.service", "com.lance.blog.dao"})
+@ComponentScan(basePackages = {"com.lance.blog.service", "com.lance.blog.aspect"})
 public class VBlogRootConfig {
+
 }
