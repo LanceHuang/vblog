@@ -18,6 +18,43 @@
         <session-timeout>20</session-timeout>
     </session-config>
 
+    <!--<filter>-->
+        <!--<filter-name>DruidWebStatFilter</filter-name>-->
+        <!--<filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>exclusions</param-name>-->
+            <!--<param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>DruidWebStatFilter</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
+
+    <!--<servlet>-->
+        <!--<servlet-name>DruidStatView</servlet-name>-->
+        <!--<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>-->
+        <!--<init-param>-->
+            <!--&lt;!&ndash; 允许清空统计数据 &ndash;&gt;-->
+            <!--<param-name>resetEnable</param-name>-->
+            <!--<param-value>true</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--&lt;!&ndash; 用户名 &ndash;&gt;-->
+            <!--<param-name>loginUsername</param-name>-->
+            <!--<param-value>druid</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--&lt;!&ndash; 密码 &ndash;&gt;-->
+            <!--<param-name>loginPassword</param-name>-->
+            <!--<param-value>druid</param-value>-->
+        <!--</init-param>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>DruidStatView</servlet-name>-->
+        <!--<url-pattern>/druid/*</url-pattern>-->
+    <!--</servlet-mapping>-->
+
     <!--&lt;!&ndash;Spring core&ndash;&gt;-->
     <!--<context-param>-->
     <!--<param-name>contextConfigLocation</param-name>-->
