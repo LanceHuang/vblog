@@ -16,6 +16,7 @@ public interface IUserService {
      */
     User getUserById(int id);
 
+    User getUserByIdWithoutTx(int id);
 
     /**
      * Update user info
@@ -24,4 +25,12 @@ public interface IUserService {
      * @return return code
      */
     int updateUserById(User u);
+
+    /**
+     * Add an user
+     *
+     * @param u user info
+     * @return auto-increment id
+     */
+    int addUser(User u);
 }

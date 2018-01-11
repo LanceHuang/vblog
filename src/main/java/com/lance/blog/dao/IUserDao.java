@@ -1,13 +1,30 @@
 package com.lance.blog.dao;
 
 import com.lance.blog.entity.User;
+import com.lance.blog.entity.UserExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
-/**
- * @author Lance
- * @since 2017/11/13
- */
 public interface IUserDao {
-    User select(int id);
+    long countByExample(UserExample example);
 
-    int update(User user);
+    int deleteByExample(UserExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    List<User> selectByExample(UserExample example);
+
+    User selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 }
