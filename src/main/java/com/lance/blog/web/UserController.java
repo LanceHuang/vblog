@@ -32,6 +32,24 @@ public class UserController {
         return "welcome";
     }
 
+    @RequestMapping(value = "/user/test", method = RequestMethod.GET)
+    public String getUserTest() {
+        logger.debug("getUserById");
+        User u = userService.getUserById(1);
+        logger.debug("User: {}", u);
+
+        return "welcome";
+    }
+
+    @RequestMapping(value = "/user/tx", method = RequestMethod.GET)
+    public String getUserWithoutTx() {
+        logger.debug("getUserById");
+        User u = userService.getUserByIdWithoutTx(1);
+        logger.debug("User: {}", u);
+
+        return "welcome";
+    }
+
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String getAllUser() {
         logger.debug("getAllUser");
