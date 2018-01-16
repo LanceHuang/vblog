@@ -4,6 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo '===========Check Java version==============='
+                bat 'java -version'
+                echo '===========Check Maven version=============='
                 bat 'mvn -version'
                 echo 'Successfully build project'
             }
@@ -23,9 +26,6 @@ pipeline {
     post {
         always {
             echo 'This will always run'
-            mail to: 'team@example.com',
-                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-                 body: "Something is wrong with ${env.BUILD_URL}"
         }
         success {
             echo 'This will run only if successful'
