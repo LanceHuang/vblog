@@ -13,6 +13,8 @@ pipeline {
         }
         stage('Test') {
             steps {
+                echo '===========Ready to run maven test=============='
+                bat 'mvn test'
                 echo 'Testing..'
             }
         }
