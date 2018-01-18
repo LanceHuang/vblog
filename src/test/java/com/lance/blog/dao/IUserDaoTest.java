@@ -1,6 +1,5 @@
 package com.lance.blog.dao;
 
-import com.lance.blog.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.context.annotation.Configuration;
