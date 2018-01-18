@@ -1,5 +1,6 @@
 package com.lance.blog.dao;
 
+import com.lance.blog.entity.UserExample;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +20,21 @@ public class IUserDaoTest {
     private IUserDao userDao;
 
     @Test
-    public void select() throws Exception {
+    public void countByExample() throws Exception {
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andIdLessThan(10000);
+        System.out.println(userDao.countByExample(userExample));
+    }
+
+    @Test
+    public void selectByExample() throws Exception {
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andIdLessThan(3);
+        System.out.println(userDao.selectByExample(userExample));
+    }
+
+    @Test
+    public void selectByPrimaryKey() throws Exception {
         System.out.println(userDao.selectByPrimaryKey(2));
     }
 }
