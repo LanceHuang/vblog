@@ -22,14 +22,18 @@ public class IUserDaoTest {
     @Test
     public void countByExample() throws Exception {
         UserExample userExample = new UserExample();
-        userExample.createCriteria().andIdLessThan(10000);
+        userExample.createCriteria()
+                .andIdLessThan(10000)
+                .andNameLike("ii%");
         System.out.println(userDao.countByExample(userExample));
     }
 
     @Test
     public void selectByExample() throws Exception {
         UserExample userExample = new UserExample();
-        userExample.createCriteria().andIdLessThan(3);
+        userExample.createCriteria()
+                .andIdLessThan(3)
+                .andNameIsNotNull();
         System.out.println(userDao.selectByExample(userExample));
     }
 

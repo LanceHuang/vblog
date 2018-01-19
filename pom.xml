@@ -58,6 +58,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <!--Security-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
         <!--Font-->
         <dependency>
             <groupId>org.springframework</groupId>
