@@ -31,10 +31,16 @@ public class AccountServlet extends HttpServlet {
         String password = req.getParameter("password");
         String action = req.getParameter("action");
 
+        if (null == username) {
+            username = "guest";
+            password = "123";
+        }
+
         Subject subject = SecurityUtils.getSubject();
         if ("logout".equals(action)) {
             logger.info("Ready to logout");
             subject.logout();
+            req.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp").forward(req, resp);
         } else {
             logger.info("Ready to login");
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
@@ -42,7 +48,9 @@ public class AccountServlet extends HttpServlet {
         }
 
 
-        req.getRequestDispatcher("/grade").forward(req, resp);
+        if (subject.isPermitted("grade:write")) {
+            req.getRequestDispatcher("/grade").forward(req, resp);
+        }
     }
 
     @Override
