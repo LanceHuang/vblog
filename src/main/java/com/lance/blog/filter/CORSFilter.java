@@ -22,11 +22,13 @@ public class CORSFilter implements Filter {
         this.filterConfig = config;
     }
 
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         logger.info("Hello CORSFilter");
-        chain.doFilter(request, response);
+
+        new TestFilter().doFilter(request, response, chain);
     }
 
     @Override

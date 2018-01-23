@@ -61,11 +61,11 @@ public class DataSourceConfig {
         ds.setInitialSize(1);
         ds.setMinIdle(1);
         ds.setMaxActive(30);
-//        try {
-//            ds.setFilters("stat");
-//        } catch (SQLException e) {
-//            logger.error(e.getMessage(), e);
-//        }
+        try {
+            ds.setFilters("stat");
+        } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+        }
         return ds;
     }
 
