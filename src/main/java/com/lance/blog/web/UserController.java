@@ -25,7 +25,7 @@ public class UserController {
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public String getUserById(@PathVariable int id) {
-        logger.debug("getUserById");
+        logger.trace("getUserById");
         User u = userService.getUserById(id);
         logger.debug("User: {}", u);
 
@@ -34,7 +34,7 @@ public class UserController {
 
     @RequestMapping(value = "/user/test", method = RequestMethod.GET)
     public String getUserTest() {
-        logger.debug("getUserById");
+        logger.trace("getUserById");
         User u = userService.getUserById(1);
         logger.debug("User: {}", u);
 
@@ -43,7 +43,7 @@ public class UserController {
 
     @RequestMapping(value = "/user/tx", method = RequestMethod.GET)
     public String getUserWithoutTx() {
-        logger.debug("getUserById");
+        logger.trace("getUserById");
         User u = userService.getUserByIdWithoutTx(1);
         logger.debug("User: {}", u);
 
@@ -52,13 +52,13 @@ public class UserController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String getAllUser() {
-        logger.debug("getAllUser");
+        logger.trace("getAllUser");
         return "welcome";
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public String addUser(@RequestBody User user) {
-        logger.debug("addUser");
+        logger.trace("addUser");
         logger.debug("Add user: {}", user);
         userService.updateUserById(user);
         return "welcome";

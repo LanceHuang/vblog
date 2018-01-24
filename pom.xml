@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -169,14 +170,30 @@
     <profiles>
         <profile>
             <id>product</id>
+            <properties>
+                <logger.level>INFO</logger.level>
+
+                <!--JDBC config-->
+                <jdbc.driverClass>com.mysql.jdbc.Driver</jdbc.driverClass>
+                <jdbc.url>
+                    <![CDATA[jdbc:mysql://localhost:3306/vblog]]></jdbc.url>
+                <jdbc.username>root</jdbc.username>
+                <jdbc.password></jdbc.password>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>develop</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
+                <logger.level>DEBUG</logger.level>
+
                 <!--JDBC config-->
                 <jdbc.driverClass>com.mysql.jdbc.Driver</jdbc.driverClass>
                 <jdbc.url>
-                    <![CDATA[jdbc:mysql://localhost:3306/school?useUnicode=true&characterEncoding=utf-8&useSSL=false]]></jdbc.url>
+                    <![CDATA[jdbc:mysql://localhost:3306/vblog]]></jdbc.url>
                 <jdbc.username>root</jdbc.username>
                 <jdbc.password></jdbc.password>
             </properties>
