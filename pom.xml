@@ -166,7 +166,6 @@
         </plugins>
     </build>
 
-    <!-- ==================================Default config============================ -->
     <profiles>
         <profile>
             <id>product</id>

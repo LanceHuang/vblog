@@ -58,4 +58,8 @@ public class VBlogAuthorizingRealm extends AuthorizingRealm {
                 "meRealm");
     }
 
+    @Override
+    protected void assertCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) throws AuthenticationException {
+        super.assertCredentialsMatch(token, info);
+    }
 }
