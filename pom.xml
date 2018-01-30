@@ -142,7 +142,7 @@
         </testResources>
 
         <plugins>
-            <!-- Code Coverage -->
+            <!-- Line Coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -162,6 +162,18 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!--Support for develop-->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.24.v20180105</version>
+                <configuration>
+                    <webAppConfig>
+                        <contextPath>/vblog</contextPath>
+                    </webAppConfig>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -192,7 +204,7 @@
                 <!--JDBC config-->
                 <jdbc.driverClass>com.mysql.jdbc.Driver</jdbc.driverClass>
                 <jdbc.url>
-                    <![CDATA[jdbc:mysql://localhost:3306/vblog]]></jdbc.url>
+                    <![CDATA[jdbc:mysql://localhost:3306/school]]></jdbc.url>
                 <jdbc.username>root</jdbc.username>
                 <jdbc.password></jdbc.password>
             </properties>

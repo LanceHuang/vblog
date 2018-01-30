@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 public class IUserDaoTest {
 
 
-    private Logger logger = LoggerFactory.getLogger("test");
+    private Logger logger = LoggerFactory.getLogger("testAppender");
 
     @Resource
     private IUserDao userDao;

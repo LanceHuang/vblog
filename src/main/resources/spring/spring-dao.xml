@@ -33,7 +33,7 @@
         <property name="password" value="${jdbc.password}"/>
 
         <!--Druid monitor-->
-        <property name="filters" value="stats"/>
+        <property name="filters" value="stat"/>
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

@@ -15,7 +15,7 @@ Just a project of blog.
 * ORM, Transaction: MyBatis
 * DB connection pool: C3P0，Druid
 * AOP: AspectJ/spring-aop
-* Logging: SLF4J/Log4J
+* Logging: SLF4J/Log4J 1.x
 
 #### Project Management
 * Manage dependency, Build project: Maven
@@ -31,6 +31,9 @@ Just a project of blog.
 * Mock test: Mockito
 * Line coverage: jacoco
 * Measure performance: JMeter/apache ab
+
+#### Server
+* Mini server(During develop-period): Jetty
 
 
 # Note
