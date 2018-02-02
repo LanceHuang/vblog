@@ -3,6 +3,8 @@ package com.lance.blog.dao;
 import com.lance.blog.entity.GradeExample;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,17 +19,19 @@ import javax.annotation.Resource;
 @ImportResource("classpath:spring/spring-dao.xml")
 public class IGradeDaoTest {
 
+    private Logger logger = LoggerFactory.getLogger("test");
+
     @Resource
     private IGradeDao gradeDao;
 
     @Test
     public void countByExample() throws Exception {
-        System.out.println(gradeDao.countByExample(new GradeExample()));
+        logger.debug("{}", gradeDao.countByExample(new GradeExample()));
     }
 
     @Test
     public void selectByPrimaryKey() throws Exception {
-        System.out.println(gradeDao.countByExample(new GradeExample()));
+        logger.debug("{}", gradeDao.selectByExample(new GradeExample()));
     }
 
 

@@ -4,6 +4,8 @@ import com.lance.blog.entity.Role;
 import com.lance.blog.entity.RoleExample;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.test.context.ContextConfiguration;
@@ -18,31 +20,33 @@ import javax.annotation.Resource;
 @ImportResource("classpath:spring/spring-dao.xml")
 public class IRoleDaoTest {
 
+    private Logger logger = LoggerFactory.getLogger("test");
+
     @Resource
     private IRoleDao roleDao;
 
     @Test
     public void insert() throws Exception {
-        System.out.println(roleDao.insert(
+        logger.debug("{}", roleDao.insert(
                 Role.builder().uid(100).name("hello role").build()));
     }
 
     @Test
     public void countByExample() throws Exception {
         RoleExample roleExample = new RoleExample();
-        System.out.println(roleDao.countByExample(roleExample));
+        logger.debug("{}", roleDao.countByExample(roleExample));
     }
 
     @Test
     public void selectByExample() throws Exception {
         RoleExample roleExample = new RoleExample();
         roleExample.createCriteria().andIdBetween(10, 14);
-        System.out.println(roleDao.selectByExample(roleExample));
+        logger.debug("{}", roleDao.selectByExample(roleExample));
     }
 
     @Test
     public void selectByPrimaryKey() throws Exception {
-        System.out.println(roleDao.selectByPrimaryKey(200));
+        logger.debug("{}", roleDao.selectByPrimaryKey(200));
     }
 
 }
