@@ -28,7 +28,7 @@ public class IRoleDaoTest {
     @Test
     public void insert() throws Exception {
         logger.debug("{}", roleDao.insert(
-                Role.builder().uid(100).name("hello role").build()));
+                Role.builder().name("hello role").build()));
     }
 
     @Test

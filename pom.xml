@@ -184,7 +184,10 @@
         <profile>
             <id>product</id>
             <properties>
-                <logger.level>INFO</logger.level>
+                <log4j.threshold>INFO</log4j.threshold>
+                <log4j.additivity>false</log4j.additivity>
+                <log4j.logger.web.threshold>ERROR</log4j.logger.web.threshold>
+                <log4j.logger.service.threshold>INFO</log4j.logger.service.threshold>
 
                 <!--JDBC config-->
                 <jdbc.driverClass>com.mysql.jdbc.Driver</jdbc.driverClass>
@@ -201,7 +204,10 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <logger.level>DEBUG</logger.level>
+                <log4j.threshold>DEBUG</log4j.threshold>
+                <log4j.additivity>true</log4j.additivity>
+                <log4j.logger.web.threshold>DEBUG</log4j.logger.web.threshold>
+                <log4j.logger.service.threshold>DEBUG</log4j.logger.service.threshold>
 
                 <!--JDBC config-->
                 <jdbc.driverClass>com.mysql.jdbc.Driver</jdbc.driverClass>

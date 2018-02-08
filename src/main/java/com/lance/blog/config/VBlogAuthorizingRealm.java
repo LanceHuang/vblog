@@ -1,6 +1,9 @@
 package com.lance.blog.config;
 
-import com.lance.blog.util.Collections;
+import com.lance.blog.dao.IRoleDao;
+import com.lance.blog.dao.IUserDao;
+import com.lance.blog.dao.IUserRoleDao;
+import com.lance.blog.entity.*;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -10,9 +13,8 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Shiro realm
@@ -22,44 +24,67 @@ import java.util.Set;
  */
 public class VBlogAuthorizingRealm extends AuthorizingRealm {
 
-    private Map<String, String> users = new HashMap<>();
-    private Map<String, Set<String>> roleInfoMap = new HashMap<>();
-    private Map<String, Set<String>> permInfoMap = new HashMap<>();
+    @Resource
+    private IUserDao userDao;
 
-    public VBlogAuthorizingRealm() {
-        users.put("root", "root");
-        users.put("guest", "123");
+    @Resource
+    private IUserRoleDao userRoleDao;
 
-        roleInfoMap.put("root", Collections.set("admin"));
-        roleInfoMap.put("guest", Collections.set("guest"));
-
-        permInfoMap.put("admin", Collections.set("*"));
-        permInfoMap.put("admin", Collections.set("grade:*"));
-        permInfoMap.put("guest", Collections.set("grade:read"));
-        permInfoMap.put("guest", Collections.set("grade:comment"));
-    }
+    @Resource
+    private IRoleDao roleDao;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        authorizationInfo.setRoles(roleInfoMap.get(principals.getPrimaryPrincipal().toString()));
-        authorizationInfo.setStringPermissions(permInfoMap.get(principals.getPrimaryPrincipal().toString()));
 
-        return authorizationInfo;
+        // TODO: 2018/2/5 It need to query five tables
+        String username = principals.getPrimaryPrincipal().toString();
+
+        //Query user id
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andNameEqualTo(username);
+        List<User> userList = userDao.selectByExample(userExample);
+
+        if (!userList.isEmpty() && 1 == userList.size()) {
+            //Query role id
+            Integer uid = userList.get(0).getId();
+            UserRoleExample userRoleExample = new UserRoleExample();
+            userRoleExample.createCriteria().andUidEqualTo(uid);
+            List<UserRole> userRoleList = userRoleDao.selectByExample(userRoleExample);
+
+
+            //Query role name
+//            RoleExample roleExample = new RoleExample();
+//            roleExample.createCriteria().andIdEqualTo();
+//
+//            List<Role> roleList =
+
+            //Query permission id
+
+            //Query permission name
+
+//            SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
+        }
+
+        return null;
     }
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
             throws AuthenticationException {
 
-        return new SimpleAuthenticationInfo(
-                token.getPrincipal().toString(),
-                users.get(token.getPrincipal().toString()),
-                "meRealm");
-    }
+        String username = token.getPrincipal().toString();
 
-    @Override
-    protected void assertCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) throws AuthenticationException {
-        super.assertCredentialsMatch(token, info);
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andNameEqualTo(username);
+        List<User> userList = userDao.selectByExample(userExample);
+
+        if (!userList.isEmpty() && 1 == userList.size()) {
+            return new SimpleAuthenticationInfo(
+                    username,
+                    userList.get(0).getPassword(),
+                    "VBlogAuthorizingRealm");
+        }
+
+        return null;
     }
 }

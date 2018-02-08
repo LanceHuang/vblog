@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
+public class RolePerm {
     private Integer id;
 
-    private String name;
+    private Integer rid;
+
+    private Integer pid;
 }

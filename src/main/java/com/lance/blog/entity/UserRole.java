@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
+public class UserRole {
     private Integer id;
 
-    private String name;
+    private Integer uid;
+
+    private Integer rid;
 }

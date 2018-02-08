@@ -3,14 +3,14 @@ package com.lance.blog.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoleExample {
+public class PermissionExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public RoleExample() {
+    public PermissionExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

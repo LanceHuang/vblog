@@ -9,10 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Grade {
+public class Permission {
     private Integer id;
 
-    private Integer uid;
-
-    private Double grade;
+    private String name;
 }

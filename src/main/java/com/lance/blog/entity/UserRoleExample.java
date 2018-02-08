@@ -3,14 +3,14 @@ package com.lance.blog.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GradeExample {
+public class UserRoleExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public GradeExample() {
+    public UserRoleExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -224,63 +224,63 @@ public class GradeExample {
             return (Criteria) this;
         }
 
-        public Criteria andGradeIsNull() {
-            addCriterion("grade is null");
+        public Criteria andRidIsNull() {
+            addCriterion("rid is null");
             return (Criteria) this;
         }
 
-        public Criteria andGradeIsNotNull() {
-            addCriterion("grade is not null");
+        public Criteria andRidIsNotNull() {
+            addCriterion("rid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andGradeEqualTo(Double value) {
-            addCriterion("grade =", value, "grade");
+        public Criteria andRidEqualTo(Integer value) {
+            addCriterion("rid =", value, "rid");
             return (Criteria) this;
         }
 
-        public Criteria andGradeNotEqualTo(Double value) {
-            addCriterion("grade <>", value, "grade");
+        public Criteria andRidNotEqualTo(Integer value) {
+            addCriterion("rid <>", value, "rid");
             return (Criteria) this;
         }
 
-        public Criteria andGradeGreaterThan(Double value) {
-            addCriterion("grade >", value, "grade");
+        public Criteria andRidGreaterThan(Integer value) {
+            addCriterion("rid >", value, "rid");
             return (Criteria) this;
         }
 
-        public Criteria andGradeGreaterThanOrEqualTo(Double value) {
-            addCriterion("grade >=", value, "grade");
+        public Criteria andRidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("rid >=", value, "rid");
             return (Criteria) this;
         }
 
-        public Criteria andGradeLessThan(Double value) {
-            addCriterion("grade <", value, "grade");
+        public Criteria andRidLessThan(Integer value) {
+            addCriterion("rid <", value, "rid");
             return (Criteria) this;
         }
 
-        public Criteria andGradeLessThanOrEqualTo(Double value) {
-            addCriterion("grade <=", value, "grade");
+        public Criteria andRidLessThanOrEqualTo(Integer value) {
+            addCriterion("rid <=", value, "rid");
             return (Criteria) this;
         }
 
-        public Criteria andGradeIn(List<Double> values) {
-            addCriterion("grade in", values, "grade");
+        public Criteria andRidIn(List<Integer> values) {
+            addCriterion("rid in", values, "rid");
             return (Criteria) this;
         }
 
-        public Criteria andGradeNotIn(List<Double> values) {
-            addCriterion("grade not in", values, "grade");
+        public Criteria andRidNotIn(List<Integer> values) {
+            addCriterion("rid not in", values, "rid");
             return (Criteria) this;
         }
 
-        public Criteria andGradeBetween(Double value1, Double value2) {
-            addCriterion("grade between", value1, value2, "grade");
+        public Criteria andRidBetween(Integer value1, Integer value2) {
+            addCriterion("rid between", value1, value2, "rid");
             return (Criteria) this;
         }
 
-        public Criteria andGradeNotBetween(Double value1, Double value2) {
-            addCriterion("grade not between", value1, value2, "grade");
+        public Criteria andRidNotBetween(Integer value1, Integer value2) {
+            addCriterion("rid not between", value1, value2, "rid");
             return (Criteria) this;
         }
     }
