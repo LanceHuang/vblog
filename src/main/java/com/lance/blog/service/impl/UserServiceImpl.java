@@ -19,15 +19,14 @@ public class UserServiceImpl implements IUserService {
     private IUserDao userDao;
 
     @Override
-    public User getUserById(int id) {
+    public User getUserById(Integer id) {
         return userDao.selectByPrimaryKey(id);
     }
 
     @Override
-    public User getUserByIdWithoutTx(int id) {
+    public User getUserByIdWithoutTx(Integer id) {
         return userDao.selectByPrimaryKey(id);
     }
-
 
     @Override
     public int updateUserById(User u) {
@@ -39,5 +38,10 @@ public class UserServiceImpl implements IUserService {
     public int addUser(User u) {
         userDao.insert(u);
         return u.getId();
+    }
+
+    @Override
+    public int removeUserById(Integer id) {
+        return userDao.deleteByPrimaryKey(id);
     }
 }

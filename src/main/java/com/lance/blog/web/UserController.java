@@ -2,6 +2,7 @@ package com.lance.blog.web;
 
 import com.lance.blog.entity.User;
 import com.lance.blog.service.IUserService;
+import com.lance.blog.util.RedisUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -25,19 +26,20 @@ public class UserController {
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public String getUserById(@PathVariable int id) {
-        logger.trace("getUserById");
-        User u = userService.getUserById(id);
-        logger.debug("User: {}", u);
+        User u = RedisUtils.get("User-" + id, User.class);
+        if (null == u) {
+            u = userService.getUserById(id);
+            RedisUtils.set("User-" + id, u);
+        }
 
+        logger.debug("User: {}", u);
         return "welcome";
     }
 
     @RequestMapping(value = "/user/test", method = RequestMethod.GET)
     public String getUserTest() {
-        logger.trace("getUserById");
         User u = userService.getUserById(1);
         logger.debug("User: {}", u);
-
         return "welcome";
     }
 
@@ -52,14 +54,19 @@ public class UserController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String getAllUser() {
-        logger.trace("getAllUser");
         return "welcome";
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public String addUser(@RequestBody User user) {
-        logger.trace("addUser");
         logger.debug("Add user: {}", user);
+        userService.addUser(user);
+        return "welcome";
+    }
+
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.POST)
+    public String updateUserById(String id, @RequestBody User user) {
+        RedisUtils.remove("User-" + id);
         userService.updateUserById(user);
         return "welcome";
     }

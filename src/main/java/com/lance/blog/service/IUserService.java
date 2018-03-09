@@ -14,9 +14,9 @@ public interface IUserService {
      * @param id user id
      * @return {@code null} if not user found
      */
-    User getUserById(int id);
+    User getUserById(Integer id);
 
-    User getUserByIdWithoutTx(int id);
+    User getUserByIdWithoutTx(Integer id);
 
     /**
      * Update user info
@@ -33,4 +33,13 @@ public interface IUserService {
      * @return auto-increment id
      */
     int addUser(User u);
+
+    /**
+     * Remove an user
+     *
+     * @param id primary id
+     */
+    int removeUserById(Integer id);
+
+
 }

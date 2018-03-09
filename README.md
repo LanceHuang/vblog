@@ -16,6 +16,7 @@ Just a project of blog.
 * DB connection pool: C3P0，Druid
 * AOP: AspectJ/spring-aop
 * Logging: SLF4J/Log4J 1.x
+* Cache: Redis
 
 #### Project Management
 * Manage dependency, Build project: Maven
