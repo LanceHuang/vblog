@@ -1,0 +1,9 @@
+server:
+  port: 9900
+
+spring:
+  profiles:
+    active: develop
+
+mybatis:
+  mapper-locations: classpath*:com/lance/blog/mapper/*.xml

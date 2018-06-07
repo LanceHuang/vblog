@@ -11,6 +11,7 @@
         <module>vblog-ssm-xml</module>
         <module>vblog-ssm-code</module>
         <module>vblog-base</module>
+        <module>vblog-springboot</module>
     </modules>
 
     <properties>

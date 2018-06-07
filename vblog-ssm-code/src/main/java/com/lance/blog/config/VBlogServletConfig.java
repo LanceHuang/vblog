@@ -7,6 +7,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -18,7 +19,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 @Configuration
 @ComponentScan(basePackages = {"com.lance.blog.web"})
-@EnableAspectJAutoProxy
 public class VBlogServletConfig extends WebMvcConfigurationSupport {
 
     @Bean
@@ -28,18 +28,4 @@ public class VBlogServletConfig extends WebMvcConfigurationSupport {
         vr.setSuffix(".jsp");
         return vr;
     }
-
-    @Bean
-    public MultipartResolver multipartResolver() {
-        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        resolver.setMaxUploadSize(20 * 1024 * 1024);
-        return resolver;
-    }
-
-    @Override
-    protected void configurePathMatch(PathMatchConfigurer configurer) {
-        super.configurePathMatch(configurer);
-        configurer.setUseSuffixPatternMatch(false);
-    }
-
 }

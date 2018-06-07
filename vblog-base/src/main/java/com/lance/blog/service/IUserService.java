@@ -2,6 +2,8 @@ package com.lance.blog.service;
 
 import com.lance.blog.entity.User;
 
+import java.util.List;
+
 /**
  * @author Lance
  * @since 2017/11/13
@@ -15,6 +17,13 @@ public interface IUserService {
      * @return {@code null} if not user found
      */
     User getUserById(Integer id);
+
+    /**
+     * Get all user info
+     *
+     * @return Empty list if not user found
+     */
+    List<User> getAllUser();
 
     /**
      * Update user info

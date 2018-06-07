@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author Lance
@@ -24,13 +25,18 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User getUserByIdWithoutTx(Integer id) {
-        return userDao.selectByPrimaryKey(id);
+    public List<User> getAllUser() {
+        return userDao.selectByExample(null);
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int updateUserById(User u) {
-        return userDao.updateByPrimaryKey(u);
+        if (userDao.updateByPrimaryKey(u) > 0) {
+            throw new IllegalArgumentException();
+        }
+
+        return 0;
     }
 
     @Override
@@ -41,6 +47,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int removeUserById(Integer id) {
         return userDao.deleteByPrimaryKey(id);
     }

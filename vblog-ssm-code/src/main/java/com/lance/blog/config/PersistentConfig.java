@@ -27,7 +27,7 @@ public class PersistentConfig {
 
         sqlSessionFactoryBean.setMapperLocations(
                 new ClassPathResource[]{
-                        new ClassPathResource("com/lance/com.lance.blog/mapper/UserMapper.xml")});
+                        new ClassPathResource("com/lance/blog/mapper/UserMapper.xml")});
         return sqlSessionFactoryBean;
     }
 

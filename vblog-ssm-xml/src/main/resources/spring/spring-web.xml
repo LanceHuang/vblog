@@ -13,9 +13,9 @@
 
     <context:component-scan base-package="com.lance.blog.web"/>
 
-    <!--<mvc:annotation-driven>-->
-        <!--<mvc:path-matching suffix-pattern="false"/>-->
-    <!--</mvc:annotation-driven>-->
+    <mvc:annotation-driven>
+        <mvc:path-matching suffix-pattern="false"/>
+    </mvc:annotation-driven>
 
     <!--View resolver-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

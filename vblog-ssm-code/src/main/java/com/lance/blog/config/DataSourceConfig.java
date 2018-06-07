@@ -29,25 +29,7 @@ public class DataSourceConfig {
     @Value("${jdbc.password}")
     private String password;
 
-//    @Bean(destroyMethod = "close")
-//    public ComboPooledDataSource dataSource() {
-//        ComboPooledDataSource ds = null;
-//        try {
-//            ds = new ComboPooledDataSource();
-//            ds.setDriverClass(driverClass);
-//            ds.setJdbcUrl(jdbcUrl);
-//            ds.setUser(username);
-//            ds.setPassword(password);
-//
-////            ds.setInitialPoolSize(20);
-//            ds.setMaxPoolSize(50);
-//        } catch (PropertyVetoException e) {
-//            logger.error(e.getMessage(), e);
-//        }
-//        return ds;
-//    }
-
-    @Bean(destroyMethod = "close")
+    @Bean(initMethod = "init", destroyMethod = "close")
     public DruidDataSource dataSource() {
         DruidDataSource ds = new DruidDataSource();
         ds.setDriverClassName(driverClass);
@@ -55,10 +37,8 @@ public class DataSourceConfig {
         ds.setUsername(username);
         ds.setPassword(password);
 
-
-        ds.setInitialSize(1);
-        ds.setMinIdle(1);
-        ds.setMaxActive(30);
+        ds.setMinIdle(8);
+        ds.setMaxActive(8);
         try {
             ds.setFilters("stat");
         } catch (SQLException e) {
